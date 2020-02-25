@@ -2,11 +2,39 @@
 <manifest>
 
   <remote  name="aosp"
-           fetch=".."
+           fetch="https://android.googlesource.com/"
            review="https://android-review.googlesource.com/" />
+  <remote  name="bbb"
+           fetch="https://github.com/opersys/" />
+
   <default revision="refs/tags/android-10.0.0_r2"
            remote="aosp"
            sync-j="4" />
+
+  <!-- BeagleBone Black device directory -->
+  <project path="device/beagleboard/beagleboneblack"
+           name="bbb-device_beagleboard_beagleboneblack"
+           remote="bbb"
+           revision="master" />
+
+  <!-- Kernel -->
+  <project path="bb-kernel/KERNEL" name="bbb-android_kernel" remote="bbb"
+           revision="bbb-hack" />
+  <project path="bb-kernel" name="bbb-rcn_kernel_scripts" remote="bbb"
+           revision="bbb-hack" />
+
+  <!-- Repositories with hacks specific to the BBB -->
+  <project path="external/minigbm" name="bbb-platform_external_minigbm" groups="pdk" remote="bbb"
+           revision="bbb-hack" />
+  <project path="external/swiftshader" name="bbb-platform_external_swiftshader" groups="pdk" remote="bbb"
+           revision="bbb-hack" />
+  <project path="frameworks/native" name="bbb-platform_frameworks_native" groups="pdk" remote="bbb"
+           revision="bbb-hack" />
+  <project path="scripts" name="bbb-scripts" remote="bbb" revision="master">
+     <linkfile src="build-beagleboneblack.sh" dest="build-beagleboneblack.sh" />
+  </project>
+
+  <!-- ### Google official Android repositories are below this. ### -->
 
   <project path="build/make" name="platform/build" groups="pdk" >
     <copyfile src="core/root.mk" dest="Makefile" />
@@ -275,7 +303,6 @@
   <project path="external/mdnsresponder" name="platform/external/mdnsresponder" groups="pdk" />
   <project path="external/mesa3d" name="platform/external/mesa3d" groups="pdk-cw-fs,pdk-fs" />
   <project path="external/Microsoft-GSL" name="platform/external/Microsoft-GSL" groups="pdk" />
-  <project path="external/minigbm" name="platform/external/minigbm" groups="pdk" />
   <project path="external/minijail" name="platform/external/minijail" groups="pdk" />
   <project path="external/mksh" name="platform/external/mksh" groups="pdk" />
   <project path="external/mockftpserver" name="platform/external/mockftpserver" groups="pdk" />
@@ -404,7 +431,6 @@
   <project path="external/strace" name="platform/external/strace" groups="pdk" />
   <project path="external/stressapptest" name="platform/external/stressapptest" groups="pdk" />
   <project path="external/subsampling-scale-image-view" name="platform/external/subsampling-scale-image-view" groups="pdk" clone-depth="1" />
-  <project path="external/swiftshader" name="platform/external/swiftshader" groups="pdk" />
   <project path="external/syzkaller" name="platform/external/syzkaller" groups="projectarch,pdk" />
   <project path="external/tagsoup" name="platform/external/tagsoup" groups="pdk" />
   <project path="external/tcpdump" name="platform/external/tcpdump" groups="pdk" />
@@ -456,7 +482,6 @@
   <project path="frameworks/minikin" name="platform/frameworks/minikin" groups="pdk-cw-fs,pdk-fs" />
   <project path="frameworks/ml" name="platform/frameworks/ml" groups="pdk" />
   <project path="frameworks/multidex" name="platform/frameworks/multidex" groups="pdk-cw-fs,pdk-fs" />
-  <project path="frameworks/native" name="platform/frameworks/native" groups="pdk" />
   <project path="frameworks/opt/bitmap" name="platform/frameworks/opt/bitmap" groups="pdk-fs" />
   <project path="frameworks/opt/calendar" name="platform/frameworks/opt/calendar" groups="pdk-cw-fs,pdk-fs" />
   <project path="frameworks/opt/car/services" name="platform/frameworks/opt/car/services" groups="pdk-fs" />
