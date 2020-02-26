@@ -34,9 +34,7 @@
      <linkfile src="build-beagleboneblack.sh" dest="build-beagleboneblack.sh" />
   </project>
 
-  <!-- ### Google official Android repositories are below this. ### -->
-
-  <project path="build/make" name="platform/build" groups="pdk" >
+  <project path="build/make" name="bbb-platform_build" groups="pdk" remote="bbb" revision="master">
     <copyfile src="core/root.mk" dest="Makefile" />
     <linkfile src="CleanSpec.mk" dest="build/CleanSpec.mk" />
     <linkfile src="buildspec.mk.default" dest="build/buildspec.mk.default" />
@@ -45,6 +43,9 @@
     <linkfile src="target" dest="build/target" />
     <linkfile src="tools" dest="build/tools" />
   </project>
+
+  <!-- ### Google official Android repositories are below this. ### -->
+
   <project path="build/blueprint" name="platform/build/blueprint" groups="pdk,tradefed" />
   <project path="build/kati" name="platform/build/kati" groups="pdk,tradefed" />
   <project path="build/soong" name="platform/build/soong" groups="pdk,tradefed" >
