@@ -47,9 +47,13 @@ To build the sources:
 ./build-beagleboneblack.sh
 ```
 
-## Writing to an SD-card
+## Booting from MicroSD
 
-The writing script currently assume a 4GB MicroSD. We'll be working on adapting the build scripts to bigger cards in the future. The whole content of the card will be erased by this procedure.
+This assumes that the BeagleBone is in its default state, with a bootloader that is able to boot from the MicroSD card. If you need to, restore your BeagleBone to factory default by using this image:
+
+https://debian.beagleboard.org/images/BBB-blank-debian-9.5-iot-armhf-2018-10-07-4gb.img.xz
+
+The script for writing the MicroSD currently assume a 4GB MicroSD. We'll be working on adapting the build scripts to bigger cards in the future. Note that whole content of the card will be erased by this procedure.
 
 DEVICE_NAME here is the filename of the device which corresponds to the MicroSD card. Ie: if the card corresponds to the ```/dev/sdc```, write just ```sdc``` there and not the whole path.
 
@@ -57,6 +61,8 @@ DEVICE_NAME here is the filename of the device which corresponds to the MicroSD 
 scripts/write-sdcard-beagleboneblack.sh $(DEVICE_NAME)
 ```
 
+This should be enough for your BeagleBone Black to boot Android.
+
 ## Using the eMMC storage
 
-We're still working on getting Android to boot from the eMMC storage.
+eMMC support in progress
