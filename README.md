@@ -14,7 +14,7 @@ cd ~/BBB-Android
 then initialize with our default.xml:
 
 ```
-repo init -u https://github.com/opersys/bbb-platform_manifest/
+repo init -u https://github.com/opersys/bbb-platform_manifest.git -b master
 ```
 
 The name choosen for the directory does not matter. 
